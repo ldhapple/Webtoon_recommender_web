@@ -22,27 +22,21 @@
 
   <div class="container">
     <h2>게시판</h2>
-    <div>총 건수 : <span th:text="${#lists.size(boards)}"></span></div>
-<!--    BoardController의 boards 값-->
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">번호</th>
-        <th scope="col">제목</th>
-        <th scope="col">작성자</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="board : ${boards}">
-        <td th:text="${board.id}">Mark</td>
-        <td><a th:text="${board.title}" th:href="@{/board/form(id=${board.id})}">Otto</a></td>
-        <td>홍길동</td>
-      </tr>
-      </tbody>
-    </table>
-    <div class="text-right">
-      <a type="button" class="btn btn-primary" th:href="@{/board/form}">쓰기</a>
+    <form action="#" th:action="@{/board/form}" th:object="${board}" method="post">
+      <input type="hidden" th:field="*{id}">
+      <div class="form-group">
+        <label for="title">제목</label>
+        <input type="text" class="form-control" id="title" placeholder="참교육 추천합니다!" th:field="*{title}">
+      </div>
+    <div class="form-group">
+      <label for="content">내용</label>
+      <textarea class="form-control" id="content" rows="3" th:field="*{content}"></textarea>
     </div>
+      <div class="text-right">
+        <button type="submit" class="btn btn-primary">등록</button>
+        <a type="button" class="btn btn-primary" th:href="@{/board/list}">취소</a>
+      </div>
+    </form>
   </div>
 
 <!-- Optional JavaScript; choose one of the two! -->
