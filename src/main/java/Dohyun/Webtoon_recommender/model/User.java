@@ -1,6 +1,6 @@
 package Dohyun.Webtoon_recommender.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -8,6 +8,10 @@ import java.util.List;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +19,9 @@ public class User {
 
     private String username;
     private String password;
+    private String mbti;
+    private String sex;
+    private Long age;
     private Boolean enabled;
 
     @ManyToMany

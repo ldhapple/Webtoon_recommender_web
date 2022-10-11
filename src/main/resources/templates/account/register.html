@@ -20,17 +20,18 @@
 
   <main class="form-signin w-100 m-auto">
     <form th:action="@{/account/register}" method="post">
-      <a th:href="@{/}"><img class="mb-4" src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72"
-        height="57"></a>
-      <h1 class="h3 mb-3 fw-normal">회원가입</h1>
+      <a th:href="@{/}"><img class="mb-4" src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg" alt=""
+          width="72" height="57"></a>
+      <h1 class="h3 mb-3 fw-normal">Register</h1>
       <div th:if="${param.error}" class="alert alert-danger" role="alert">
-        Invalid username and password.
+        Invalid username, age and password.
       </div>
       <div th:if="${param.logout}" class="alert alert-primary" role="alert">
         You have been logged out.
       </div>
+
       <div class="form-floating">
-        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Id">
         <label for="username"></label>
       </div>
       <div class="form-floating">
@@ -38,12 +39,66 @@
         <label for="floatingPassword"></label>
       </div>
 
+      <hr class="my-4">
+
+      <div class="row g-2">
+        <div class="col-md-5">
+          <label for="sex" class="form-label">Sex</label>
+          <select class="form-select" name= "sex" id="sex" required>
+            <option value="">Choose...</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+          <div class="invalid-feedback">
+            Please select a valid sex.
+          </div>
+        </div>
+
+        <div class="col-md-4">
+
+          <label for="mbti" class="form-label">MBTI</label>
+          <select class="form-select" name = "mbti" id="mbti" required>
+            <option value="">Choose...</option>
+            <option>INFP</option>
+            <option>ENFP</option>
+            <option>ESFJ</option>
+            <option>ISFJ</option>
+            <option>ISFP</option>
+            <option>ESFP</option>
+            <option>INTP</option>
+            <option>INFJ</option>
+            <option>ENFJ</option>
+            <option>ENTP</option>
+            <option>ESTJ</option>
+            <option>ISTJ</option>
+            <option>INTJ</option>
+            <option>ISTP</option>
+            <option>ESTP</option>
+            <option>ENTJ</option>
+
+          </select>
+          <div class="invalid-feedback">
+            Please select a valid mbti.
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <div class="form-floating">
+        <input type="age" class="form-control" id="age" name="age" placeholder="Age">
+        <label for="age"></label>
+      </div>
+
+
+
+
       <!--    <div class="checkbox mb-3">-->
       <!--      <label>-->
       <!--        <input type="checkbox" value="remember-me"> Remember me-->
       <!--      </label>-->
       </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">회원가입</button>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">register</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
     </form>
   </main>
