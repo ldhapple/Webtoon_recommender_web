@@ -1,0 +1,51 @@
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
+.media-scroller{
+    --_spacer: var(--size-3);
+    display: grid;
+    gap: var(--size-3);
+    grid-auto-flow: column;
+    grid-auto-columns: 25%;
+
+    padding: 0 var(--_spacer) var(--_spacer);
+
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+
+.media-element{
+    display: grid;
+    grid-template-rows: min-content;
+    gap: var(--_spacer);
+    padding: var(--_spacer);
+    background: var(--surface-2);
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-2);
+}
+
+.media-elemnet > img{
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+
+}
+
+.snaps-inline{
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: var(--_spacer, 1rem);
+}
+
+.snaps-inline > *{
+    scroll-snap-align: start;
+}
+
+.container{
+    inline-size: min(100% - 4rem, 70rem);
+    margin-inline: auto;
+}
+
+.flow{
+    display: grid;
+    gap: var(--size-3);
+}

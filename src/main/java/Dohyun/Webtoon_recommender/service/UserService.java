@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -20,19 +22,27 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+//    public List<User> findAll(){
+//        return userRepository.findAll();
+//    }
+
+//    public boolean hasErrors(User user, BindingResult bindingResult){
+//        if(bindingResult.hasErrors()){
+//            return true;
+//        }
+//
+//
+//        if(userRepository.findById(user.getId()) != null){
+//            bindingResult.rejectValue("userId", null, "중복된 아이디입니다.");
+//            return true;
+//        }
+//
+//        return false;
+//    }
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Transactional(readOnly = true)
-    public Map<String, String> validateHandling(Errors errors){
-        Map<String, String> validatorResult = new HashMap<>();
-
-        for(FieldError error : errors.getFieldErrors()){
-            String validKeyName = String.format("valid_%s", error.getField());
-            validatorResult.put(validKeyName, error.getDefaultMessage());
-        }
-        return validatorResult;
-    }
 
     public User save(User user){
         String encodedPassword = passwordEncoder.encode(user.getPassword());

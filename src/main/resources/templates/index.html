@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th = "http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragment/common :: head('웹툰 추천 사이트')">
     <!-- Required meta tags -->
@@ -8,14 +8,15 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <link href="starter-template.css" rel="stylesheet">
+    <link href="row-horizon.css" rel="stylesheet">
     <title>웹툰 추천 사이트</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace = "fragment/common :: menu('home')">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragment/common :: menu('home')">
         <!-- <a class="navbar-brand" href="#">SpringBoot Tutorial</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,6 +44,57 @@
                 나한테 딱 맞는 웹툰을 추천받고 지인과 공유하세요.</p>
         </div>
 
+        <h1>MBTI별 선호 웹툰</h1>
+        <hr class="my-4">
+        <h2>ISTJ</h2>
+
+        <div class="media-scroller snaps-inline">
+            <div class="media-element">
+                <img src="/image/thumbnail_IMAG10_.jpg" alt ="99강화나무몽둥이" />
+                <p class="title">99강화나무몽둥이</p>
+            </div>
+            
+            <div class="media-element">
+                <img src="/image/thumbnail_IMAG10_.jpg">
+                <p class="title">Short title</p>
+            </div>
+
+            <div class="media-element">
+                <img src="/image/thumbnail_IMAG10_.jpg">
+                <p class="title">Short title</p>
+            </div>
+
+            <div class="media-element">
+                <img src="/image/thumbnail_IMAG10_.jpg">
+                <p class="title">Short title</p>
+            </div>
+
+            <div class="media-element">
+                <img src="/image/thumbnail_IMAG10_.jpg">
+                <p class="title">Short title</p>
+            </div>
+
+                
+        </div>
+
+                                        <!-- <div class="col">
+                <div class="card shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                            dy=".3em">Thumbnail</text>
+                    </svg>
+
+                    <div class="card-body">
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                        </div>
+                    </div>
+                </div>
+            </div> -->
     </main>
 
     <!-- Optional JavaScript; choose one of the two! -->
