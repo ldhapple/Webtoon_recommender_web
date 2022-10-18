@@ -3,16 +3,17 @@
 
 <head th:replace="fragment/common :: head('웹툰 추천 사이트')">
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <link href="starter-template.css" rel="stylesheet">
-    <link href="row-horizon.css" rel="stylesheet">
-    <title>웹툰 추천 사이트</title>
+    <link rel="stylesheet" href="starter-template.css">
+    <!-- <link th:href="@{/css/starter-template.css}" rel="stylesheet"> -->
+    <!--    <link th:href="@{/css/horizon_scroller.css}" rel="stylesheet">-->
+    <title> 웹툰 추천 사이트</title>
 </head>
 
 <body>
@@ -39,45 +40,202 @@
     <main role="main" class="container">
 
         <div class="starter-template">
-            <h1>웹툰 추천 사이트</h1>
+            <h1> 웹툰 추천 사이트 </h1>
             <p class="lead">나이, 성별, MBTI, 평가를 바탕으로<br>
                 나한테 딱 맞는 웹툰을 추천받고 지인과 공유하세요.</p>
         </div>
 
         <h1>MBTI별 선호 웹툰</h1>
         <hr class="my-4">
-        <h2>ISTJ</h2>
+        <h2 class="section-title">ISTJ</h2>
 
-        <div class="media-scroller snaps-inline">
-            <div class="media-element">
-                <img src="/image/thumbnail_IMAG10_.jpg" alt ="99강화나무몽둥이" />
-                <p class="title">99강화나무몽둥이</p>
-            </div>
-            
-            <div class="media-element">
-                <img src="/image/thumbnail_IMAG10_.jpg">
-                <p class="title">Short title</p>
+        <div class="media-scroller">
+            <div class="media-group" id="ISTJ_group-1">
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_0a.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_2c.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_5.jpg" alt="">
+                </div>
+
+                <a class="next" href="#ISTJ_group-2" aria-label="next">
+                    <svg>
+                        <use href="#next"></use>
+                    </svg>
+                </a>
             </div>
 
-            <div class="media-element">
-                <img src="/image/thumbnail_IMAG10_.jpg">
-                <p class="title">Short title</p>
+            <div class="media-group" id="ISTJ_group-2">
+
+                <a class="previous" href="#ISTJ_group-1">
+                    <svg>
+                        <use href="#previous"></use>
+                    </svg>
+                </a>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_3.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_3f.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_5.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_07.jpg" alt="">
+                </div>
+
+                <a class="next" href="#ISTJ_group-3" aria-label="next">
+                    <svg>
+                        <use href="#next"></use>
+                    </svg>
+                </a>
+
             </div>
 
-            <div class="media-element">
-                <img src="/image/thumbnail_IMAG10_.jpg">
-                <p class="title">Short title</p>
+            <div class="media-group" id="ISTJ_group-3">
+
+                <a class="previous" href="#ISTJ_group-2">
+                    <svg>
+                        <use href="#previous"></use>
+                    </svg>
+                </a>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_06.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_7.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_07.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_9.jpg" alt="">
+                </div>
+
+                <div class="navigation-indicators">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
 
-            <div class="media-element">
-                <img src="/image/thumbnail_IMAG10_.jpg">
-                <p class="title">Short title</p>
-            </div>
-
-                
         </div>
 
-                                        <!-- <div class="col">
+
+        <h2>ESFP</h2>
+
+        <div class="media-scroller">
+            <div class="media-group" id="ESFP_group-1">
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_0a.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_2c.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_5.jpg" alt="">
+                </div>
+
+                <a class="next" href="#ESFP_group-2" aria-label="next">
+                    <svg>
+                        <use href="#next"></use>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="media-group" id="ESFP_group-2">
+
+                <a class="previous" href="#ESFP_group-1">
+                    <svg>
+                        <use href="#previous"></use>
+                    </svg>
+                </a>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_3.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_3f.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_5.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_07.jpg" alt="">
+                </div>
+
+                <a class="next" href="#ESFP_group-3" aria-label="next">
+                    <svg>
+                        <use href="#next"></use>
+                    </svg>
+                </a>
+
+            </div>
+
+            <div class="media-group" id="ESFP_group-3">
+
+                <a class="previous" href="#ESFP_group-2">
+                    <svg>
+                        <use href="#previous"></use>
+                    </svg>
+                </a>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_06.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_7.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_07.jpg" alt="">
+                </div>
+
+                <div class="media-element">
+                    <img src="/img/thumbnail_IMAG10_9.jpg" alt="">
+                </div>
+
+                <div class="navigation-indicators">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- <div class="col">
                 <div class="card shadow-sm">
                     <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
                         xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
@@ -95,6 +253,17 @@
                     </div>
                 </div>
             </div> -->
+        <svg>
+            <symbol id="next" viewBox="0 0 256 512">
+                <path fill="white"
+                    d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" />
+            </symbol>
+
+            <symbol id="previous" viewBox="0 0 256 512">
+                <path fill="white"
+                    d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z" />
+            </symbol>
+        </svg>
     </main>
 
     <!-- Optional JavaScript; choose one of the two! -->
@@ -112,6 +281,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
+
 </body>
 
 </html>
