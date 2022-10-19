@@ -10,9 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="starter-template.css">
-    <!-- <link th:href="@{/css/starter-template.css}" rel="stylesheet"> -->
-    <!--    <link th:href="@{/css/horizon_scroller.css}" rel="stylesheet">-->
+    <link th:href="@{/css/starter-template.css}" rel="stylesheet">
+    
     <title> 웹툰 추천 사이트</title>
 </head>
 
@@ -37,205 +36,583 @@
         </div> -->
     </nav>
 
-    <main role="main" class="container">
-
-        <div class="starter-template">
-            <h1> 웹툰 추천 사이트 </h1>
-            <p class="lead">나이, 성별, MBTI, 평가를 바탕으로<br>
+    <!-- <main role="main" class="container flow"> -->
+    <header class="page-header">
+        <div class="container flow">
+            <h1 class="page-title"> Webtoon Recommender </h1>
+            <p class="page-subtitle">나이, 성별, MBTI, 평가를 바탕으로<br>
                 나한테 딱 맞는 웹툰을 추천받고 지인과 공유하세요.</p>
         </div>
+    </header>
 
-        <h1>MBTI별 선호 웹툰</h1>
-        <hr class="my-4">
-        <h2 class="section-title">ISTJ</h2>
+    <h1 class="section-title">MBTI별 선호 웹툰</h1>
+    <hr class="my-4">
+    <h2 class="section-title">ISTJ</h2>
 
-        <div class="media-scroller">
-            <div class="media-group" id="ISTJ_group-1">
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_0a.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_2c.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_5.jpg" alt="">
-                </div>
-
-                <a class="next" href="#ISTJ_group-2" aria-label="next">
-                    <svg>
-                        <use href="#next"></use>
-                    </svg>
-                </a>
-            </div>
-
-            <div class="media-group" id="ISTJ_group-2">
-
-                <a class="previous" href="#ISTJ_group-1">
-                    <svg>
-                        <use href="#previous"></use>
-                    </svg>
-                </a>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_3.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_3f.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_5.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_07.jpg" alt="">
-                </div>
-
-                <a class="next" href="#ISTJ_group-3" aria-label="next">
-                    <svg>
-                        <use href="#next"></use>
-                    </svg>
-                </a>
-
-            </div>
-
-            <div class="media-group" id="ISTJ_group-3">
-
-                <a class="previous" href="#ISTJ_group-2">
-                    <svg>
-                        <use href="#previous"></use>
-                    </svg>
-                </a>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_06.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_7.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_07.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_9.jpg" alt="">
-                </div>
-
-                <div class="navigation-indicators">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
         </div>
-
-
-        <h2>ESFP</h2>
-
-        <div class="media-scroller">
-            <div class="media-group" id="ESFP_group-1">
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_0a.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_2c.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_5.jpg" alt="">
-                </div>
-
-                <a class="next" href="#ESFP_group-2" aria-label="next">
-                    <svg>
-                        <use href="#next"></use>
-                    </svg>
-                </a>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_0.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0d.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_1be.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_2e5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_02.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_03.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_4a.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_4b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6e.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6f1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7f.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_8e.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_9f.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_13.jpg" alt="">
             </div>
-
-            <div class="media-group" id="ESFP_group-2">
-
-                <a class="previous" href="#ESFP_group-1">
-                    <svg>
-                        <use href="#previous"></use>
-                    </svg>
-                </a>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_3.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_3f.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_5.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_07.jpg" alt="">
-                </div>
-
-                <a class="next" href="#ESFP_group-3" aria-label="next">
-                    <svg>
-                        <use href="#next"></use>
-                    </svg>
-                </a>
-
-            </div>
-
-            <div class="media-group" id="ESFP_group-3">
-
-                <a class="previous" href="#ESFP_group-2">
-                    <svg>
-                        <use href="#previous"></use>
-                    </svg>
-                </a>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_06.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_7.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_07.jpg" alt="">
-                </div>
-
-                <div class="media-element">
-                    <img src="/img/thumbnail_IMAG10_9.jpg" alt="">
-                </div>
-
-                <div class="navigation-indicators">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
         </div>
+    </div>
 
+    <h2 class="section-title">ESFP</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_18.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_26.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_30.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_36.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_39.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_44.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_46.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_50.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_58.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_59.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_60.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_64.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_72.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_77.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_82.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_84.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_87.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_88.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
 
-        <!-- <div class="col">
+    <h2 class="section-title">INFP</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_91.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_96.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_138.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_487.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_a5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_a76.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_aa.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ad4.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_aee.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_b1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ba.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_bb.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_bf.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c7.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c8.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c47.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c72.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">ENTJ</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_d3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_db.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e2.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e6.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ed.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ee9.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_f3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_f8.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fa.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fb.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fc6.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ff.jpg" alt="">
+                <img src="/img/thumbnail_IMAG10_0a.jpg" alt="">
+                <img src="/img/title_thumbnail_20.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0d.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">INTJ</h2>
+
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_0.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0d.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_1be.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_2e5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_02.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_03.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_4a.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_4b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6e.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6f1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7f.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_8e.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_9f.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_13.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">ENFJ</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_18.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_26.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_30.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_36.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_39.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_44.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_46.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_50.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_58.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_59.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_60.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_64.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_72.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_77.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_82.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_84.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_87.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_88.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">ISTP</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_91.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_96.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_138.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_487.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_a5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_a76.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_aa.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ad4.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_aee.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_b1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ba.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_bb.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_bf.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c7.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c8.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c47.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c72.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">ESFJ</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_d3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_db9.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e2.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e6.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ed.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ee9.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_f3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_f8.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fa.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fb.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fc6.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ff.jpg" alt="">
+                <img src="/img/thumbnail_IMAG10_0a.jpg" alt="">
+                <img src="/img/title_thumbnail_20.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0d.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">ISFP</h2>
+
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_0.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0d.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_1be.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_2e5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_02.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_03.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_4a.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_4b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6e.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6f1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7f.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_8e.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_9f.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_13.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">ENTP</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_18.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_26.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_30.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_36.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_39.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_44.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_46.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_50.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_58.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_59.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_60.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_64.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_72.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_77.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_82.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_84.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_87.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_88.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">ISFJ</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_91.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_96.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_138.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_487.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_a5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_a76.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_aa.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ad4.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_aee.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_b1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ba.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_bb.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_bf.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c7.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c8.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c47.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c72.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">ESTJ</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_d3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_db.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e2.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e6.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ed.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ee9.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_f3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_f8.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fa.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fb.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fc6.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ff.jpg" alt="">
+                <img src="/img/thumbnail_IMAG10_0a.jpg" alt="">
+                <img src="/img/title_thumbnail_20.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0d.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">INTP</h2>
+
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_0.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0d.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_1be.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_2e5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_02.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_03.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_4a.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_4b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6e.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_6f1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7b.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_7f.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_8e.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_9f.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_13.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">ENFP</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_18.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_26.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_30.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_36.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_39.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_44.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_46.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_50.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_58.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_59.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_60.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_64.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_72.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_77.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_82.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_84.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_87.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_88.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">INFJ</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_91.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_96.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_138.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_487.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_a5.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_a76.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_aa.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ad4.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_aee.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_b1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ba.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_bb.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_bf.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c7.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c8.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c47.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_c72.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">ESTP</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <img src="/img/thumbnail_IMAG06_d3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_4a.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_db9.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e1.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e2.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_e6.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ed.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ee9.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_f3.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_f8.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fa.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fb.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_fc6.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_ff.jpg" alt="">
+                <img src="/img/thumbnail_IMAG10_0a.jpg" alt="">
+                <img src="/img/title_thumbnail_20.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0.jpg" alt="">
+                <img src="/img/thumbnail_IMAG06_0d.jpg" alt="">
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
+    
+    <hr class="my-4">
+    <!-- <div class="col">
                 <div class="card shadow-sm">
                     <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
                         xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
@@ -253,22 +630,14 @@
                     </div>
                 </div>
             </div> -->
-        <svg>
-            <symbol id="next" viewBox="0 0 256 512">
-                <path fill="white"
-                    d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" />
-            </symbol>
-
-            <symbol id="previous" viewBox="0 0 256 512">
-                <path fill="white"
-                    d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z" />
-            </symbol>
-        </svg>
-    </main>
+    
+    <!-- </main> -->
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script type="text/javascript" src="/js/scroller.js" defer></script>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -282,6 +651,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
 
+    
 </body>
 
 </html>
