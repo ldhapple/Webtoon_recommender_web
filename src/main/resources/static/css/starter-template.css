@@ -69,6 +69,15 @@ svg {
   margin-left: 30px;
 }
 
+.main-comment {
+  font-size: 15px;
+  font-family: system-ui;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-left: 5px;
+  color: rgba(255, 255, 255, .5);
+}
+
 :root {
   --handle-size: 3rem;
   --img-gap: .25rem;
@@ -91,6 +100,7 @@ svg {
   padding: var(--img-gap);
   border-radius: 1rem;
 }
+
 
 .handle {
   border: none;
@@ -134,6 +144,7 @@ svg {
 .handle:focus .text {
   transform: scale(1.2);
 }
+
 
 .headers {
   display: flex;
