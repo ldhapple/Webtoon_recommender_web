@@ -93,6 +93,10 @@ svg {
   transition: transform 250ms ease-in-out;
 }
 
+.main{
+  --items-per-screen: 4;
+}
+
 .slider>img {
   flex: 0 0 calc(100% / var(--items-per-screen));
   max-width: calc(100% / var(--items-per-screen));
@@ -169,12 +173,10 @@ svg {
   flex: 0 0 1.5rem;
   min-width: 1.5rem;
   height: .25rem;
-  /* background: #121212; */
   background: rgba(255, 255, 255, .5);
 }
 
 .progress-item.active {
-    /* background: #121212; */
   background: rgba(255, 255, 255, .9);
 }
 
