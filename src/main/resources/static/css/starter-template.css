@@ -97,6 +97,7 @@ svg {
   --items-per-screen: 4;
 }
 
+
 .slider .card {
   flex: 0 0 calc(100% / var(--items-per-screen));
   max-width: calc(100% / var(--items-per-screen));
@@ -134,6 +135,11 @@ svg {
 }
 
 .slider .card:hover .description a {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slider .card:hover .description p {
   transform: translateY(0);
   opacity: 1;
 }
@@ -244,9 +250,18 @@ svg {
   transition: all 0.3s ease-out 0.2s;
 }
 
+.description p {
+  font-weight: 700;
+  font-size: 13px;
+  margin: 0 0 20px;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.3s ease-out 0.2s;
+}
+
 .description a {
   color: #fff;
-  background: #34aff3;
+  background: #7d7f81;
   display: inline-block;
   padding: 10px 25px;
   text-decoration: none;
@@ -257,7 +272,7 @@ svg {
 }
 
 .description a:hover {
-  background: #0e6290;
+  background: #2f2f30;
 }
 
 .table .table-striped tbody {
@@ -432,4 +447,8 @@ div.cardz-2:hover body {
   to {
     transform: scale(1.1) rotatex('30deg')
   }
+}
+
+.card > img{
+  object-fit: cover;
 }

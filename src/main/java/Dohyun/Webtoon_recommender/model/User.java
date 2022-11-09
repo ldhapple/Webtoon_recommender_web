@@ -22,11 +22,12 @@ public class User {
 //    @NotEmpty(message="아이디를 입력하세요(1~12자)")
 //    @Size(min=1, max=12)
 
+//    @Column(unique = true) //username 중복 X
     private String username;
     private String password;
     private String mbti;
     private String sex;
-    private Long age;
+    private long age;
     private Boolean enabled;
 
     @ManyToMany
@@ -35,4 +36,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Rating> ratingList = new ArrayList<>();
 }

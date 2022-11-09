@@ -18,6 +18,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title> 웹툰 평가 및 추천받기</title>
+
 </head>
 
 <body>
@@ -32,180 +33,47 @@
         </div>
 
         <div class="container">
-            <p>평가 진행도</p>
+            <p>평가 개수</p>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50"
-                    aria-valuemin="0" aria-valuemax="540" style="width:9.25%">
-                    9.25%
+                    aria-valuemin="0" aria-valuemax="540" style="width:5.25%">
+                    10개
                 </div>
             </div>
         </div>
     </main>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-        <div class="col">
+        <div class="col" th:each="every_webtoon_data : ${webtoonData}">
             <div class="containers">
                 <div class="cards">
-                    <img src="/img/400739.jpg" alt="">
-                    <form>
+                    <img th:src="${every_webtoon_data.img_src}" alt="">
+                    <form th:action="@{/recommend/recommender}" th:object="${rating}" method="post">
+                        <input type="hidden" name="webtoonid" th:value="${every_webtoon_data.titleid}">
                         <div class="rating">
-                            <h3>에이머</h3>
+                            <h3 th:text="${every_webtoon_data.titlename}"> 웹툰제목</h3>
+                            <input type='radio' hidden name='rate' th:id="${every_webtoon_data.titleid}+1000001"
+                                data-idx='1' value='5' th:field="*{rate}">
+                            <label th:for="${every_webtoon_data.titleid}+1000001"></label>
 
-                            <input type='radio' hidden name='rate' id='rating-opt5' data-idx='1'>
-                            <label for='rating-opt5'></label>
+                            <input type='radio' hidden name='rate' th:id="${every_webtoon_data.titleid}+1000002"
+                                data-idx='2' value='4' th:field="*{rate}">
+                            <label th:for="${every_webtoon_data.titleid}+1000002"></label>
 
-                            <input type='radio' hidden name='rate' id='rating-opt4' data-idx='2'>
-                            <label for='rating-opt4'></label>
+                            <input type='radio' hidden name='rate' th:id="${every_webtoon_data.titleid}+1000003"
+                                data-idx='3' value='3' th:field="*{rate}">
+                            <label th:for="${every_webtoon_data.titleid}+1000003"></label>
 
-                            <input type='radio' hidden name='rate' id='rating-opt3' data-idx='3'>
-                            <label for='rating-opt3'></label>
+                            <input type='radio' hidden name='rate' th:id="${every_webtoon_data.titleid}+1000004"
+                                data-idx='4' value='2' th:field="*{rate}">
+                            <label th:for="${every_webtoon_data.titleid}+1000004"></label>
 
-                            <input type='radio' hidden name='rate' id='rating-opt2' data-idx='4'>
-                            <label for='rating-opt2'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt1' data-idx='5'>
-                            <label for='rating-opt1'></label>
+                            <input type='radio' hidden name='rate' th:id="${every_webtoon_data.titleid}+1000005"
+                                data-idx='5' value='1' th:field="*{rate}">
+                            <label th:for="${every_webtoon_data.titleid}+1000005"></label>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="containers">
-                <div class="cards">
-                    <img src="/img/761104.jpg" alt="">
-                    <form>
-                        <div class="rating">
-                            <h3>대학원 탈출일지</h3>
-`
-                            <input type='radio' hidden name='rate' id='rating-opt5q' data-idx='1'>
-                            <label for='rating-opt5q'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt4q' data-idx='2'>
-                            <label for='rating-opt4q'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt3q' data-idx='3'>
-                            <label for='rating-opt3q'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt2q' data-idx='4'>
-                            <label for='rating-opt2q'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt1q' data-idx='5'>
-                            <label for='rating-opt1q'></label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="containers">
-                <div class="cards">
-                    <img src="/img/797155.jpg" alt="">
-                    <form>
-                        <div class="rating">
-                            <h3>에이머</h3>
-
-                            <input type='radio' hidden name='rate' id='rating-opt5w' data-idx='1'>
-                            <label for='rating-opt5w'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt4w' data-idx='2'>
-                            <label for='rating-opt4w'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt3w' data-idx='3'>
-                            <label for='rating-opt3w'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt2w' data-idx='4'>
-                            <label for='rating-opt2w'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt1w' data-idx='5'>
-                            <label for='rating-opt1w'></label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="containers">
-                <div class="cards">
-                    <img src="/img/791937.jpg" alt="">
-                    <form>
-                        <div class="rating">
-                            <h3>에이머</h3>
-
-                            <input type='radio' hidden name='rate' id='rating-opt5e' data-idx='1'>
-                            <label for='rating-opt5e'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt4e' data-idx='2'>
-                            <label for='rating-opt4e'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt3e' data-idx='3'>
-                            <label for='rating-opt3e'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt2e' data-idx='4'>
-                            <label for='rating-opt2e'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt1e' data-idx='5'>
-                            <label for='rating-opt1e'></label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="containers">
-                <div class="cards">
-                    <img src="/img/758665.jpg" alt="">
-                    <form>
-                        <div class="rating">
-                            <h3>에이머</h3>
-
-                            <input type='radio' hidden name='rate' id='rating-opt5r' data-idx='1'>
-                            <label for='rating-opt5r'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt4r' data-idx='2'>
-                            <label for='rating-opt4r'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt3r' data-idx='3'>
-                            <label for='rating-opt3r'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt2r' data-idx='4'>
-                            <label for='rating-opt2r'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt1r' data-idx='5'>
-                            <label for='rating-opt1r'></label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col">
-            <div class="containers">
-                <div class="cards">
-                    <img src="/img/785812.jpg" alt="">
-                    <form>
-                        <div class="rating">
-                            <h3>에이머</h3>
-
-                            <input type='radio' hidden name='rate' id='rating-opt5t' data-idx='1'>
-                            <label for='rating-opt5t'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt4t' data-idx='2'>
-                            <label for='rating-opt4t'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt3t' data-idx='3'>
-                            <label for='rating-opt3t'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt2t' data-idx='4'>
-                            <label for='rating-opt2t'></label>
-
-                            <input type='radio' hidden name='rate' id='rating-opt1t' data-idx='5'>
-                            <label for='rating-opt1t'></label>
+                        <div class="text-right">
+                            <button id="submit" type="submit" class="btn btn-primary">평가</button>
                         </div>
                     </form>
                 </div>

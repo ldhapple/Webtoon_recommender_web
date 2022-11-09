@@ -42,9 +42,15 @@ public class AccountController {
 
 
     @PostMapping("/register")
-    public String register(User user)
+    public String register(@Valid User user, BindingResult bindingResult)
     {
-        userService.save(user);
-        return "redirect:/account/login";
+        if(bindingResult.hasErrors()){
+            return "account/register";
+        }
+        else{
+            userService.save(user);
+            return "redirect:/account/login";
+        }
+
     }
 }
