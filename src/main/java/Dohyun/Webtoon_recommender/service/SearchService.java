@@ -30,4 +30,11 @@ public class SearchService {
 
         return rating;
     }
+
+    @Transactional
+    public List<WebtoonData> searchWebtoon(String keyword){
+        List<WebtoonData> searchWebtoon = webtoonDataRepository.findByTitlenameContaining(keyword);
+
+        return searchWebtoon;
+    }
 }

@@ -47,8 +47,7 @@ public class RecommendController {
     {
         String username = authentication.getName();
         ratingService.save(username, rating, webtoonid);
-//        ratingService.save(username, rating);
-        return "redirect:/recommend/recommender"; //redirect를 통해 다시 한번 조회가 되도록 함. 안하면 업데이트없이 창띄움.
+        return "redirect:/recommend/recommender";
     }
 
 

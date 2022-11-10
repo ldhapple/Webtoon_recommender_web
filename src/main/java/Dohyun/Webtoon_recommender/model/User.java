@@ -39,4 +39,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Rating> ratingList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Reply> replyList;
 }

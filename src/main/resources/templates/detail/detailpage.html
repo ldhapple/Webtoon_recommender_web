@@ -27,77 +27,50 @@
             <div class="col-md-12">
                 <div
                     class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <h3 class="mb-0">취사병 전설이 되다</h3>
-                        <div class="mb-1 text-muted">제이로빈 / 이진수</div> <br>
-                        <p class="card-text mb-auto">대한민국 대표 흙수저, 강성재. <br>
+                    <div class="col p-4 d-flex flex-column position-static" th:object="${webtoonData}">
+                        <h3 class="mb-0" th:text="${webtoonData.titlename}">취사병 전설이 되다</h3>
+                        <div class="mb-1 text-muted" th:text="${webtoonData.author}">제이로빈 / 이진수</div> <br>
+                        <p class="card-text mb-auto" th:text="${webtoonData.story}">대한민국 대표 흙수저, 강성재. <br>
                             불안하기만 한 군생활에 한줄기 빛처럼 다가온 <br> 전설의 취사병이 될 기회!</p>
-                        <div class="mb-3 text-muted">스토리, 판타지</div>
-                        <a href="https://comic.naver.com/webtoon/list?titleId=727188&weekday=sat"
-                            class="stretched-link">webtoon-link</a>
+                        <div class="mb-3 text-muted" th:text="${webtoonData.genre}">스토리, 판타지</div>
+                        <a th:href="${webtoonData.link}" class="stretched-link">webtoon-link</a>
                     </div>
-                    <img width=350
-                        src="/img/727188.jpg">
+                    <img width=350 th:src="${webtoonData.img_src}">
                 </div>
             </div>
         </div>
 
 
         <div class="container">
-            <!-- <h2>게시판</h2>
-    <form action="#" th:action="@{/board/form}" th:object="${board}" method="post">
-      <input type="hidden" th:field="*{id}">   -->
-            <div class="form-group">
-                <label for="content">comment</label>
-                <textarea class="form-control" id="content" rows="3"></textarea>
-                <!--                <textarea class="form-control" id="content" rows="3" th:field="*{content}"></textarea>-->
-            </div>
-            <div class="text-right">
-                <button type="submit" class="btn btn-primary">등록</button>
-            </div>
+            <form id="reply" th:action="@{/detail/detailpage/reply_write}" method="post">
+                <h3>comment</h3>
+                <input type="hidden" id="titleId" name="titleId" th:value="${webtoonData.titleid}">
+                <input type="text" id="content" name="content" class="form-control" placeholder="댓글을 입력해주세요.." aria-label="댓글을 입력해주세요.." aria-describedby="basic-addon2">
+<!--                <textarea class="form-control" id="content" name="content" rows="3"></textarea>-->
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">등록</button>
+                </div>
             </form>
         </div>
 
         <div class="container">
             <h4>댓글</h4>
-            <!-- <div>총 건수 : <span th:text="${#lists.size(boards)}"></span></div> -->
-            <!--    BoardController의 boards 값-->
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col" class="text-white">번호</th>
-                        <th scope="col" class="text-white">내용</th>
                         <th scope="col" class="text-white">작성자</th>
+                        <th scope="col" class="text-white">내용</th>
                         <th scope="col" class="text-white">작성시각</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr >
-                        <!-- th:each="board : ${boards}" -->
-                        <td class="text-white">1</td> 
-                        <!-- th:text="${board.id}" -->
-                        <td class="text-white">요즘 재밌어요!</td>
-                        <td class="text-white">홍길동</td>
-                        <td class="text-white">2022-11-02 17:48:00</td>
+                <tbody th:each="reply_list : ${reply}">
+                    <tr>
+                        <td class="text-white" th:text="${reply_list.user.username}">홍길동</td>
+                        <td class="text-white" th:text="${reply_list.content}">요즘 재밌어요!</td>
+                        <td class="text-white" th:text="${reply_list.createDate}">2022-11-02 17:48:00</td>
                     </tr>
                 </tbody>
             </table>
-            
-            <!-- <div id="comment-area">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>댓글번호</th>
-                            <th>작성자</th>
-                            <th>내용</th>
-                            <th>작성시간</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div> -->
-
         </div>
 
 

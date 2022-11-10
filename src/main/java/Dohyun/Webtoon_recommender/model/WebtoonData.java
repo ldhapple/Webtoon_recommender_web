@@ -23,4 +23,7 @@ public class WebtoonData {
 
     @OneToMany(mappedBy = "webtoon")
     private List<Rating> ratings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "webtoon")
+    private List<Reply> reply;
 }
