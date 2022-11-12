@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="starter-template.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <title> 웹툰 평가 및 추천받기</title>
 
 </head>
@@ -78,6 +79,17 @@
             </div>
         </div>
     </div>
+
+    <hr class="my-4">
+    <hr class="my-4">
+    <hr class="my-4">
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" th:if="!${webtoonData.first}" th:href="@{/recommend/recommender/(page=${webtoonData.number - 1})}">Previous</a></li>
+            <li class="page-item"><a class="page-link" th:if="!${webtoonData.last}" th:href="@{/recommend/recommender/(page=${webtoonData.number + 1})}">Next</a></li>
+        </ul>
+    </nav>
 </body>
 
 </html>

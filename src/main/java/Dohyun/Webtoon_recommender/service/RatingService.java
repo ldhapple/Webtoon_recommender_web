@@ -43,6 +43,10 @@ public class RatingService {
         return ratingRepository.save(rating);
     }
 
+    public Page<WebtoonData> pageList(Pageable pageable){
+        return webtoonDataRepository.findAll(pageable);
+    }
+
 //    @Transactional
 //    public Page<Rating> search(String username, Pageable pageable){
 //        Page<Rating> ratingList = ratingRepository.findByUsername(username, pageable);

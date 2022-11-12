@@ -11,6 +11,8 @@ import Dohyun.Webtoon_recommender.repository.UserRepository;
 import Dohyun.Webtoon_recommender.repository.WebtoonDataRepository;
 import Dohyun.Webtoon_recommender.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 
@@ -39,12 +41,14 @@ public class RecommendController {
 
 
     @GetMapping("/recommender")
-    public String recommend(Model model, Authentication authentication) {
+    public String recommend(Model model, Authentication authentication, @PageableDefault(size=40)Pageable pageable) {
         User user = userRepository.findByUsername(authentication.getName());
-        List<WebtoonData> webtoonData = webtoonDataRepository.findAll();
         List<Rating> rating = ratingRepository.findAll();
         List<Rating> userRating = ratingRepository.findByUser(user);
-        model.addAttribute("webtoonData", webtoonData);
+        model.addAttribute("webtoonData", ratingService.pageList(pageable));
+//        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+//        model.addAttribute("next", pageable.next().getPageNumber());
+
         model.addAttribute("rating", new Rating());
         model.addAttribute("userRate", userRating);
         return "recommend/recommender";
