@@ -305,6 +305,11 @@ svg {
   background: rgb(27, 27, 27, 0.5);
 }
 
+.cards h3{
+  margin: 5px;
+  font-size: 16px;
+}
+
 .cards:hover {
   cursor: pointer;
 }
@@ -322,12 +327,12 @@ svg {
 
 .rating h3 {
   margin: 5px;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 label {
   float: right;
-  padding: 0;
+  padding: 0 0 0;
   font-size: 30px;
   cursor: pointer;
 }
@@ -449,6 +454,3 @@ div.cardz-2:hover body {
   }
 }
 
-.card > img{
-  object-fit: cover;
-}

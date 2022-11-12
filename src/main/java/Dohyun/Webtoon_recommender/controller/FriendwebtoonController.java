@@ -41,6 +41,7 @@ public class FriendwebtoonController {
     public String friend(Model model, @RequestParam(value = "keyword", required=false) String keyword, Authentication authentication) {
 
         String username = authentication.getName();
+//        String user_sex = userRepository.findByUsername(username).getSex();
         if(keyword == null)
         {
             List<Rating> ratingList = searchService.searchRating(username);
