@@ -39,8 +39,8 @@
 ### 각 웹툰별 의견 공유
 ![image](https://user-images.githubusercontent.com/90108877/201484211-27f80669-9d64-42df-9936-8d2584934876.png)
 
-현재 웹툰들에도 댓글기능이 있지만 해당 회차에 대한 댓글이라 맘에 들지 않았을 때 요리 레시피같은 댓글 테러를 하는 경우도 있어<br>
-웹툰에 대한 의견 나눔이 아쉽기 때문에 웹툰 전체에 대한 생각, 느낌을 공유할 수 있는 공간입니다.
+현재 웹툰들에도 댓글기능이 있지만 해당 회차에 대한 댓글이라 맘에 들지 않았을 때 <br>
+요리 레시피같은 댓글 테러를 하는 경우도 있어 웹툰에 대한 의견 나눔이 아쉽기 때문에 웹툰 전체에 대한 생각, 느낌을 공유할 수 있는 공간입니다.
 
 ### 웹툰 검색
 ![image](https://user-images.githubusercontent.com/90108877/201484328-ee584ba4-0e7b-441e-96e7-d40fda653be0.png)
@@ -51,7 +51,6 @@
 ![image](https://user-images.githubusercontent.com/90108877/201484380-36184c57-3d32-4693-b84d-3eb859a48db6.png)
 
 ![image](https://user-images.githubusercontent.com/90108877/201484405-e976ece0-c8bd-4c16-8a23-7829e86f6fcd.png)
-
 
 개인 취향에 맞는 웹툰을 추천받고, MBTI별 선호하는 웹툰을 파악할 수 있습니다.  
 
