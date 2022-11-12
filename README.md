@@ -64,6 +64,8 @@
 * Database:  ![mariaDB](https://img.shields.io/badge/-MariaDB-yellow)
 
 ## 🔉 Data
+  ![image](https://user-images.githubusercontent.com/90108877/201485868-e7097add-096b-494f-8de8-b13e2d7cb94d.png)
+  
 ```python
     {
        "Webtoon_data":[
@@ -81,3 +83,6 @@
            }   
        ]
     }
+    
+  
+
