@@ -1,6 +1,6 @@
  <div align=center>
  
- <h3 align=right>볼만한웹툰없나</h3>
+ <h3>볼만한웹툰없나</h3>
  </div>
  
 
