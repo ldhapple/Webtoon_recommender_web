@@ -28,6 +28,30 @@ public class RecommendService {
             random_main.add(main.get(i));
         }
 
+        //        for (Entry<User, HashMap<Item, Double>> e : data.entrySet()) {
+//            for (Item j : e.getValue().keySet()) {
+//                for (Item k : diff.keySet()) {
+//                    double predictedValue =
+//                            diff.get(k).get(j).doubleValue() + e.getValue().get(j).doubleValue();
+//                    double finalValue = predictedValue * freq.get(k).get(j).intValue();
+//                    uPred.put(k, uPred.get(k) + finalValue);
+//                    uFreq.put(k, uFreq.get(k) + freq.get(k).get(j).intValue());
+//                }
+//            }
+//            HashMap<Item, Double> clean = new HashMap<Item, Double>();
+//            for (Item j : uPred.keySet()) {
+//                if (uFreq.get(j) > 0) {
+//                    clean.put(j, uPred.get(j).doubleValue() / uFreq.get(j).intValue());
+//                }
+//            }
+//            for (Item j : InputData.items) {
+//                if (e.getValue().containsKey(j)) {
+//                    clean.put(j, e.getValue().get(j));
+//                } else if (!clean.containsKey(j)) {
+//                    clean.put(j, -1.0);
+//                }
+//            }
+//        }
         return random_main;
     }
 
@@ -40,6 +64,8 @@ public class RecommendService {
             random_mbti_recommend.add(mbti_recommend.get(i));
         }
 
+
+
         return random_mbti_recommend;
     }
 
@@ -50,12 +76,12 @@ public class RecommendService {
         Collections.shuffle(main_neu);
         List<MainDemo> main = new ArrayList<MainDemo>(20);
 
-        for(int i = 0; i < 9; i++)
+        for(int i = 0; i < 8; i++)
         {
             main.add(main_neu.get(i));
         }
 
-        for(int i = 0; i < 11; i++)
+        for(int i = 0; i < 12; i++)
         {
             main.add(main_sex.get(i));
         }
