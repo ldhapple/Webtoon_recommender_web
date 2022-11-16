@@ -30,7 +30,7 @@
 
 자신이 봤던 웹툰에 대한 평가를 할 수 있는 메뉴입니다.
 ### 친구의 웹툰
-![image](https://user-images.githubusercontent.com/90108877/201484035-9e569863-8c4b-4b3c-8b4d-f797de23dd57.png)
+![image](https://user-images.githubusercontent.com/90108877/202190743-5895765f-e737-4e7c-bfa6-c13cf963d880.png)
 
 
 지인이나 친구의 아이디를 입력해 친구가 평가한 웹툰을 공유받고 서로 의견을 나눌 수 있는 메뉴입니다.
