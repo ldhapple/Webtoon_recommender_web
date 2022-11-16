@@ -13,7 +13,6 @@
 
 >### 각자 평가한 웹툰의 점수, MBTI, 성별, 나이 데이터를 바탕으로 개인의 취향에 맞는 웹툰을 추천해주는 서비스입니다.<br>
 
-### dashboard
 ![image](https://user-images.githubusercontent.com/90108877/202189942-4e234ed1-f140-4892-9223-673c49fd958c.png)
 
 ### 서비스 목록
@@ -26,7 +25,7 @@
 
 
 ### 웹툰 평가
-![image](https://user-images.githubusercontent.com/90108877/201483958-f23ec564-d474-4b94-8cd4-9dd541e5c06e.png)
+![image](https://user-images.githubusercontent.com/90108877/202190281-747546af-0d0d-443c-a3fd-9dd3fb27e586.png)
 
 
 자신이 봤던 웹툰에 대한 평가를 할 수 있는 메뉴입니다.
