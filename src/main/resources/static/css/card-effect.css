@@ -1,0 +1,92 @@
+.container .card {
+    max-width: 288px;
+    height: 163px;
+    margin: 30px 10px;
+    /* padding: 20px 15px; */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease-in-out;
+    background-color: #333;
+}
+
+.container .card:hover {
+    height: 350px;
+}
+
+.container .card .imgContainern {
+    background-color: #333;
+    position: relative;
+    width: 288px;
+    height: 270px;
+    /* top:-50px; */
+    /* left:10px; */
+    z-index: 1;
+    /* box-shadow: 0 5px 20px rgba(0,0,0,0.2); */
+}
+
+.container .card .imgContainern img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.container .card .contentn {
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+    color: white;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease-in-out;
+}
+
+.container .card:hover .contentn {
+    visibility: visible;
+    opacity: 1;
+    margin-top: -10px;
+    transition-delay: 0.3s;
+}
+
+@media (max-width: 330px) {
+    .container .card .imgContainern {
+        left: -2px;
+    }
+}
+
+.container .card .rating {
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+    text-transform: capitalize;
+    padding: 0 0 8%;
+    color: lightgray;
+    /* visibility: hidden;
+  opacity: 0; */
+}
+
+.container .card .rating h3 {
+    margin: 5px;
+    font-size: 12px;
+}
+
+.container .card .rating label {
+    float: right;
+    padding: 0 0 0;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.container .card .rating label::before {
+    content: "\2606";
+    padding-bottom: 8px;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+.container .card .rating input:checked~label::before {
+    content: "\2605";
+    color: orange;
+    filter: drop-shadow(0 0 4px);
+    transform: rotate(.2turn);
+    transition-delay: calc(0.1 * attr(data-idx integer));
+}
