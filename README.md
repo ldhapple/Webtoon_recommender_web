@@ -36,13 +36,13 @@
 지인이나 친구의 아이디를 입력해 친구가 평가한 웹툰을 공유받고 서로 의견을 나눌 수 있는 메뉴입니다.
 
 ### 각 웹툰별 의견 공유
-![image](https://user-images.githubusercontent.com/90108877/201484211-27f80669-9d64-42df-9936-8d2584934876.png)
+![image](https://user-images.githubusercontent.com/90108877/202191088-bf6397e4-adc5-458a-8f8f-985be3ec5e64.png)
 
 현재 웹툰들에도 댓글기능이 있지만 해당 회차에 대한 댓글이라 맘에 들지 않았을 때 <br>
 요리 레시피같은 댓글 테러를 하는 경우도 있어 웹툰에 대한 의견 나눔이 아쉽기 때문에 웹툰 전체에 대한 생각, 느낌을 공유할 수 있는 공간입니다.
 
 ### 웹툰 검색
-![image](https://user-images.githubusercontent.com/90108877/201484328-ee584ba4-0e7b-441e-96e7-d40fda653be0.png)
+![image](https://user-images.githubusercontent.com/90108877/202191185-c33266ce-1c30-42e3-8a55-736643b1bd5a.png)
 
 특정 웹툰에 대한 의견을 보고 싶거나 의견을 나타내고 싶을 때 검색할 수 있습니다.
 
