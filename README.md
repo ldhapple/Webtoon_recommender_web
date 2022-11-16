@@ -47,9 +47,9 @@
 특정 웹툰에 대한 의견을 보고 싶거나 의견을 나타내고 싶을 때 검색할 수 있습니다.
 
 ### 웹툰 추천
-![image](https://user-images.githubusercontent.com/90108877/201484380-36184c57-3d32-4693-b84d-3eb859a48db6.png)
+![image](https://user-images.githubusercontent.com/90108877/202191340-a34307b7-847d-4965-b420-3dcec6a1443d.png)
 
-![image](https://user-images.githubusercontent.com/90108877/201484405-e976ece0-c8bd-4c16-8a23-7829e86f6fcd.png)
+![image](https://user-images.githubusercontent.com/90108877/202191416-dd289013-1a1f-411b-a434-4b13f46035f9.png)
 
 개인 취향에 맞는 웹툰을 추천받고, MBTI별 선호하는 웹툰을 파악할 수 있습니다.  
 
