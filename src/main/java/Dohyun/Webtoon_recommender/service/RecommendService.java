@@ -70,21 +70,22 @@ public class RecommendService {
     }
 
     public List<MainDemo> recommend_main_login(String user_sex){
+        List<MainDemo> main = new ArrayList<MainDemo>(20);
         List<MainDemo> main_sex = mainDemoRepository.findBySex(user_sex);
         Collections.shuffle(main_sex);
+        for(int i = 0; i < 12; i++)
+        {
+            main.add(main_sex.get(i));
+        }
+
         List<MainDemo> main_neu = mainDemoRepository.findBySex("Neutral");
         Collections.shuffle(main_neu);
-        List<MainDemo> main = new ArrayList<MainDemo>(20);
-
         for(int i = 0; i < 8; i++)
         {
             main.add(main_neu.get(i));
         }
 
-        for(int i = 0; i < 12; i++)
-        {
-            main.add(main_sex.get(i));
-        }
+
 
         Collections.shuffle(main);
 

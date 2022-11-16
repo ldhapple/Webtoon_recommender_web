@@ -12,6 +12,8 @@
 
     <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="/css/starter-template.css" th:href="@{/starter-template.css}" rel="stylesheet">
+
     <title>상세페이지_demo</title>
 </head>
 
@@ -31,7 +33,7 @@
                         <p class="card-text mb-auto" th:text="${webtoonData.story}">대한민국 대표 흙수저, 강성재. <br>
                             불안하기만 한 군생활에 한줄기 빛처럼 다가온 <br> 전설의 취사병이 될 기회!</p>
                         <div class="mb-3 text-muted" th:text="${webtoonData.genre}">스토리, 판타지</div>
-                        <a th:href="${webtoonData.link}" class="stretched-link">webtoon-link</a>
+                        <a th:href="${webtoonData.link}" class="stretched-link" target="_blank">webtoon-link</a>
                     </div>
                     <img width=350 th:src="${webtoonData.img_src}">
                 </div>

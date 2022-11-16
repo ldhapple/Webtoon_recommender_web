@@ -25,7 +25,7 @@
     </nav>
 
     <main role="main" class="container">
-
+        <hr class="my-4">
         <div class="starter-template">
             <h1> 친구의 웹툰 </h1>
             <p class="lead">친구의 아이디를 검색해보세요.<br>
@@ -48,9 +48,10 @@
     <hr class="my-4">
     <hr class="my-4">
 
-    <h3 th:if="${!rating.isEmpty()}" th:text="${rating[0].user.username}+의웹툰"></h3>
+    <h3 class="text-center" th:if="${!rating.isEmpty()}" th:text="${rating[0].user.username}+의웹툰"></h3>
     <h3 class="text-center" th:if="${rating.isEmpty()}">평가데이터가 존재하지 않습니다.</h3>
-    <div class="row row-cols-1 row-cols-md-4 g-4">
+    <hr class="my-4">
+    <!-- <div class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col" th:each="ratingwebtoon : ${rating}">
             <div class="card bg-dark mb-3" style="max-width: 600px;">
                 <div class="row g-0">
@@ -66,6 +67,21 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="container d-flex align-items-center justify-content-start position-relative flex-wrap">
+        <div class="card d-flex position-relative flex-column friend" th:each="ratingwebtoon : ${rating}">
+            <div class='imgContainer'>
+                <img th:src="${ratingwebtoon.webtoon.img_src}" alt="">
+            </div>
+            <div class="content">
+                <h3 th:text="${ratingwebtoon.webtoon.titlename}"> 웹툰제목</h3>
+                <p class="card-text" th:text="${ratingwebtoon.rate}+점">Last
+                    updated 3 mins ago</p>
+                <a th:href="@{/detail/detailpage/(id=${ratingwebtoon.webtoon.titleid})}"
+                    class="btn btn-secondary">comments</a>
             </div>
         </div>
     </div>
