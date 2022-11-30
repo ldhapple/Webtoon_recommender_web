@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragment/common :: head('웹툰 추천 사이트')">
+<head th:replace="fragment/common :: head('Webtoon Recommender')">
   <!-- Required meta tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -61,7 +61,7 @@
   </div> -->
 
 
-  <div class="container d-flex align-items-center justify-content-center position-relative flex-wrap">
+  <div class="container d-flex align-items-center justify-content-start position-relative flex-wrap">
     <div class="card d-flex position-relative flex-column every" th:each="everywebtoon : ${webtoon}">
       <div class='imgContainer'>
         <img th:src="${everywebtoon.img_src}" alt="">

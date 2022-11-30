@@ -1,0 +1,82 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragment/common :: head('Webtoon Recommender')">
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="rating.css">
+  <link rel="stylesheet" href="starter-template.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <title> 웹툰 평가 및 추천받기</title>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"
+     th:replace="fragment/common :: menu('recommender')">
+</nav>
+<main role="main" class="container">
+  <hr class="my-4">
+  <div class="starter-template">
+    <p class="lead">내가 본 웹툰을 평가하면<br>
+      홈 화면에 나에게 맞는 웹툰을 추천해드립니다. </p>
+  </div>
+
+  <div class="container">
+    <p>평가 개수</p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50"
+           th:aria-valuemin="${#lists.size(userRate)}" aria-valuemax="543" style="width:5.25%"
+           th:text="${#lists.size(userRate)}+개">
+        10개
+      </div>
+    </div>
+  </div>
+</main>
+
+<hr class="my-4">
+<hr class="my-4">
+<hr class="my-4">
+
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" th:href="@{recommender}">평가</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" th:href="@{myrating}">내 평가 웹툰</a>
+    </li>
+  </ul>
+</div>
+
+
+<div class="container d-flex align-items-center justify-content-start position-relative flex-wrap">
+  <h3 class="text-center" th:if="${myrating.isEmpty()}">평가데이터가 존재하지 않습니다.</h3>
+  <div class="card d-flex position-relative flex-column friend" th:if="${!myrating.isEmpty()}" th:each="ratingwebtoon : ${myrating}">
+    <div class='imgContainer'>
+      <img th:src="${ratingwebtoon.webtoon.img_src}" alt="">
+    </div>
+    <div class="content">
+      <h3 th:text="${ratingwebtoon.webtoon.titlename}"> 웹툰제목</h3>
+      <p class="card-text" th:text="${ratingwebtoon.rate}+점">Last
+        updated 3 mins ago</p>
+      <a th:href="@{/detail/detailpage/(id=${ratingwebtoon.webtoon.titleid})}"
+         class="btn btn-secondary">comments</a>
+    </div>
+  </div>
+</div>
+
+<hr class="my-4">
+<hr class="my-4">
+
+</body>
+
+</html>

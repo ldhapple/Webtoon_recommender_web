@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragment/common :: head('웹툰 추천 사이트')">
+<head th:replace="fragment/common :: head('Webtoon Recommender')">
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,6 +42,21 @@
         </div>
     </main>
 
+    <hr class="my-4">
+    <hr class="my-4">
+    <hr class="my-4">
+
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" th:href="@{/recommend/recommender}">평가</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" th:href="@{/recommend/myrating}">내 평가 웹툰</a>
+            </li>
+        </ul>
+    </div>
+
     <div class="container d-flex align-items-center justify-content-start position-relative flex-wrap">
         <div class="card d-flex position-relative flex-column" th:each="every_webtoon_data : ${webtoonData}">
             <div class='imgContainer'>
@@ -81,9 +96,18 @@
         </div>
     </div>
 
+    <div class="container">
+        <ul class="nav" style="float: right">
+        <li class="nav-item">
+            <a th:href="@{/login}" class="btn btn-secondary" role="button" data-bs-toggle="button">평가 완료</a>
+        </li>
+    </ul>
+    </div>
+
     <hr class="my-4">
     <hr class="my-4">
     <hr class="my-4">
+
 
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">

@@ -42,14 +42,17 @@ public class FriendwebtoonController {
 
         String username = authentication.getName();
 //        String user_sex = userRepository.findByUsername(username).getSex();
-        if(keyword == null)
-        {
-            List<Rating> ratingList = searchService.searchRating(username);
-            model.addAttribute("rating", ratingList);
-        }else{
-            List<Rating> ratingList = searchService.searchRating(keyword);
-            model.addAttribute("rating", ratingList);
-        }
+//        if(keyword == null)
+//        {
+//            List<Rating> ratingList = searchService.searchRating(username);
+//            model.addAttribute("rating", ratingList);
+//        }else{
+//            List<Rating> ratingList = searchService.searchRating(keyword);
+//            model.addAttribute("rating", ratingList);
+//        }
+
+        List<Rating> ratingList = searchService.searchRating(keyword);
+        model.addAttribute("rating", ratingList);
 
         return "friend/friendwebtoon";
     }

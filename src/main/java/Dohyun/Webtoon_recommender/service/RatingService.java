@@ -8,11 +8,13 @@ import Dohyun.Webtoon_recommender.repository.UserRepository;
 import Dohyun.Webtoon_recommender.repository.WebtoonDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import javax.validation.constraints.Null;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,9 +45,28 @@ public class RatingService {
         return ratingRepository.save(rating);
     }
 
-    public Page<WebtoonData> pageList(Pageable pageable){
-        return webtoonDataRepository.findAll(pageable);
+    public Page<WebtoonData> pageList(Pageable pageable, String username){
+        User user = userRepository.findByUsername(username);
+        List<Rating> userRating = ratingRepository.findByUser(user);
+        List<WebtoonData> check = new ArrayList<>();
+        for(int i = 0; i < userRating.size(); i++)
+        {
+            check.add(userRating.get(i).getWebtoon());
+        }
+        List<WebtoonData> webtoon = webtoonDataRepository.findAll();
+        webtoon.removeAll(check);
+
+        int start = (int)pageable.getOffset();
+        int end = (start + pageable.getPageSize()) > webtoon.size() ? webtoon.size() : (start + pageable.getPageSize());
+
+//        return webtoonDataRepository.findAll(pageable);
+        return new PageImpl<>(webtoon.subList(start, end), pageable, webtoon.size());
     }
+
+
+//    public Page<WebtoonData> pageList(Pageable pageable){
+//        return webtoonDataRepository.findAll(pageable);
+//    }
 
 //    @Transactional
 //    public Page<Rating> search(String username, Pageable pageable){

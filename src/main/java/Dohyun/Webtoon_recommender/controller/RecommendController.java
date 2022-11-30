@@ -10,6 +10,7 @@ import Dohyun.Webtoon_recommender.repository.RatingRepository;
 import Dohyun.Webtoon_recommender.repository.UserRepository;
 import Dohyun.Webtoon_recommender.repository.WebtoonDataRepository;
 import Dohyun.Webtoon_recommender.service.RatingService;
+import Dohyun.Webtoon_recommender.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -38,20 +39,42 @@ public class RecommendController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private SearchService searchService;
+
 
 
     @GetMapping("/recommender")
     public String recommend(Model model, Authentication authentication, @PageableDefault(size=40)Pageable pageable) {
-        User user = userRepository.findByUsername(authentication.getName());
+        String username = authentication.getName();
+        User user = userRepository.findByUsername(username);
         List<Rating> rating = ratingRepository.findAll();
         List<Rating> userRating = ratingRepository.findByUser(user);
-        model.addAttribute("webtoonData", ratingService.pageList(pageable));
+
+
+
+        model.addAttribute("webtoonData", ratingService.pageList(pageable, username));
 //        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
 //        model.addAttribute("next", pageable.next().getPageNumber());
 
         model.addAttribute("rating", new Rating());
         model.addAttribute("userRate", userRating);
+
         return "recommend/recommender";
+    }
+
+    @GetMapping("/myrating")
+    public String myrating(Model model, Authentication authentication) {
+        String username = authentication.getName();
+        User user = userRepository.findByUsername(username);
+
+        List<Rating> userRating = ratingRepository.findByUser(user);
+        model.addAttribute("userRate", userRating);
+
+        List<Rating> ratingList = searchService.searchRating(username);
+        model.addAttribute("myrating", ratingList);
+
+        return "recommend/myrating";
     }
 
     @PostMapping("/recommender")
