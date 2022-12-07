@@ -41,6 +41,8 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 
 	implementation 'org.springframework.boot:spring-boot-starter-validation' //의존성 validation
+
+	implementation 'es.upm.etsisi:cf4j:2.3.0' // cf4j
 }
 
 tasks.named('test') {
