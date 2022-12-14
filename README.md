@@ -55,7 +55,13 @@
 ![image](https://user-images.githubusercontent.com/90108877/202191416-dd289013-1a1f-411b-a434-4b13f46035f9.png)
 
 개인 취향에 맞는 웹툰을 MBTI, 나이, 성별, 평가데이터를 바탕으로 content based filtering을 통해 추천받고,<br>
-MBTI별 선호하는 웹툰을 파악할 수 있습니다.  
+MBTI별 선호하는 웹툰을 파악할 수 있습니다. 
+
+Python 라이브러리를 이용했으며, 선호장르를 파악할 수 있다고 판단되는 MBTI 기능유형 4유형으로 분류해 코사인 유사도를 구한다. <br>
+웹툰 평가데이터의 코사인유사도와 유저 정보의 코사인유사도를 따로 구해 전처리하여 합산한다. <br>
+
+최종 코사인유사도 값을 통해 KNN 알고리즘을 이용하여 Collaborative Filtering을 진행하여 점수가 높은 <br>
+상위 20개의 웹툰을 추천한다.
 
 
 ## 🌍 Environment
