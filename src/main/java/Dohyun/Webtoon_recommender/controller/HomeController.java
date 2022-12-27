@@ -4,13 +4,25 @@ import Dohyun.Webtoon_recommender.model.MainDemo;
 import Dohyun.Webtoon_recommender.model.MbtiDemo;
 import Dohyun.Webtoon_recommender.repository.MainDemoRepository;
 import Dohyun.Webtoon_recommender.repository.MbtiDemoRepository;
+import Dohyun.Webtoon_recommender.repository.RatingRepository;
 import Dohyun.Webtoon_recommender.repository.UserRepository;
 import Dohyun.Webtoon_recommender.service.RecommendService;
+import org.apache.commons.collections4.MultiValuedMap;
+import org.python.core.PyFunction;
+import org.python.core.PyInteger;
+import org.python.core.PyObject;
+import org.python.util.PythonInterpreter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,6 +42,9 @@ public class HomeController {
 
     @Autowired
     private RecommendService recommendService;
+
+    @Autowired
+    private RatingRepository ratingRepository;
 
     @GetMapping
     public String home(Model model) {
@@ -60,7 +75,31 @@ public class HomeController {
         String username = authentication.getName();
         String user_sex = userRepository.findByUsername(username).getSex();
 
-        model.addAttribute("Main", recommendService.recommend_main_login(user_sex));
+
+        long user_id = userRepository.findByUsername(username).getId();
+
+        if(ratingRepository.findByUserId(user_id).size() >= 5)
+        {
+            RestTemplate restTemplate = new RestTemplate();
+            String url = "http://localhost:5001/recom_webtoon";
+
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+            MultiValueMap<String, Integer> body = new LinkedMultiValueMap<>();
+            body.add("user_id", (int)user_id);
+
+            HttpEntity<?> requestMessage = new HttpEntity<>(body, httpHeaders);
+
+            HttpEntity<String> response = restTemplate.postForEntity(url, requestMessage, String.class);
+            model.addAttribute("Main", recommendService.recommend_main(user_id));
+
+        } else {
+            model.addAttribute("Main", recommendService.recommend_main_login(user_sex));
+        }
+
+
+
 
         model.addAttribute("ISTJ", recommendService.recommend_mbti("ISTJ"));
         model.addAttribute("ESFP", recommendService.recommend_mbti("ESFP"));

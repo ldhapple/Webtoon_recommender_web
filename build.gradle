@@ -43,6 +43,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation' //의존성 validation
 
 	implementation 'es.upm.etsisi:cf4j:2.3.0' // cf4j
+	implementation 'org.python:jython-slim:2.7.3' // jython
 }
 
 tasks.named('test') {

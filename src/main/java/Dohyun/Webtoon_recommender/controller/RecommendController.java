@@ -11,21 +11,30 @@ import Dohyun.Webtoon_recommender.repository.UserRepository;
 import Dohyun.Webtoon_recommender.repository.WebtoonDataRepository;
 import Dohyun.Webtoon_recommender.service.RatingService;
 import Dohyun.Webtoon_recommender.service.SearchService;
+import org.python.util.PythonInterpreter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 
 @Controller
 @RequestMapping("/recommend")
 public class RecommendController {
+
 
     @Autowired
     private WebtoonDataRepository webtoonDataRepository;
@@ -84,6 +93,5 @@ public class RecommendController {
         ratingService.save(username, rating, webtoonid);
         return "redirect:/recommend/recommender";
     }
-
 
 }

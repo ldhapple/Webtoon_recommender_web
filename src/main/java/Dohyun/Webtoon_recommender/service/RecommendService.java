@@ -2,9 +2,17 @@ package Dohyun.Webtoon_recommender.service;
 
 import Dohyun.Webtoon_recommender.model.MainDemo;
 import Dohyun.Webtoon_recommender.model.MbtiDemo;
+import Dohyun.Webtoon_recommender.model.Recommendation;
 import Dohyun.Webtoon_recommender.repository.MainDemoRepository;
 import Dohyun.Webtoon_recommender.repository.MbtiDemoRepository;
+import Dohyun.Webtoon_recommender.repository.RecommendationRepository;
+import org.python.core.PyFunction;
+import org.python.core.PyInteger;
+import org.python.core.PyLong;
+import org.python.core.PyObject;
+import org.python.util.PythonInterpreter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,6 +29,15 @@ public class RecommendService {
     @Autowired
     private MbtiDemoRepository mbtiDemoRepository;
 
+    @Autowired
+    private RecommendationRepository recommendationRepository;
+
+    public List<Recommendation> recommend_main(Long user_id){
+
+        List<Recommendation> random_main = recommendationRepository.findByUserId(user_id);
+
+        return random_main;
+    }
     public List<MainDemo> recommend_main(){
         List<MainDemo> main = mainDemoRepository.findAll();
         Collections.shuffle(main);
@@ -58,12 +75,12 @@ public class RecommendService {
     }
 
     public List<MbtiDemo> recommend_mbti(String mbti){
-        List<MbtiDemo> mbti_recommend = mbtiDemoRepository.findByMbti(mbti);
-        Collections.shuffle(mbti_recommend);
-        List<MbtiDemo> random_mbti_recommend = new ArrayList<MbtiDemo>(18);
-        for(int i = 0; i < 18; i++)
-        {
-            random_mbti_recommend.add(mbti_recommend.get(i));
+            List<MbtiDemo> mbti_recommend = mbtiDemoRepository.findByMbti(mbti);
+            Collections.shuffle(mbti_recommend);
+            List<MbtiDemo> random_mbti_recommend = new ArrayList<MbtiDemo>(18);
+            for(int i = 0; i < 18; i++)
+            {
+                random_mbti_recommend.add(mbti_recommend.get(i));
         }
 
 
