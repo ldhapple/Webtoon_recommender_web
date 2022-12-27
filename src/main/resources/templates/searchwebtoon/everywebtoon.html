@@ -31,15 +31,16 @@
       <p class="lead">웹툰 게시판에서 의견을 공유해보세요.</p>
     </div>
 
-
     <div class="input-group mb-3">
-      <form th:action="@{/searchwebtoon/everywebtoon}" method="GET">
-        <input type="text" class="form-control" placeholder="웹툰 제목" aria-label="webtoon title"
-          aria-describedby="basic-addon2" name="keyword">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="submit">Search</button>
+      <nav class="navbar-padding-x:.5rem;">
+        <div class="container-fluid">
+          <form class="d-flex" role="search" th:action="@{/searchwebtoon/everywebtoon}" method="GET">
+            <input type="text" class="form-control" placeholder="웹툰 제목" aria-label="webtoon title"
+                   aria-describedby="basic-addon2" name="keyword">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+          </form>
         </div>
-      </form>
+      </nav>
     </div>
   </main>
 

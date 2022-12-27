@@ -47,6 +47,10 @@
                     <a class="nav-link" href="#" th:href="@{/searchwebtoon/everywebtoon}">전체 웹툰 <span class="sr-only" th:if="${menu} == home">(current)</span></a>
                 </li>
 
+                <li class="nav-item" th:classappend="${menu} == 'ask'? 'active'">
+                    <a class="nav-link" href="#" th:href="@{/contact/ask}">문의 하기 <span class="sr-only" th:if="${menu} == home">(current)</span></a>
+                </li>
+
             </ul>
 
             <a class="btn btn-secondary my-2 mr-2 my-sm-0" th:href="@{/account/login}"
