@@ -64,15 +64,22 @@ Python 라이브러리를 이용했으며, 선호장르를 파악할 수 있다�
 상위 20개의 웹툰을 추천한다.
 
 
+
+
 ## 🌍 Environment
 
 * Language : ![파이썬](https://img.shields.io/badge/python-blue) ![자바](https://img.shields.io/badge/-java-orange) 
 ![자스](https://img.shields.io/badge/-javascript-red) ![html](https://img.shields.io/badge/html-9cf) ![html](https://img.shields.io/badge/css-yellow)
-* Framework : ![SpringBoot](https://img.shields.io/badge/-SpringBoot-brightgreen) ![BootStrap](https://img.shields.io/badge/-BootStrap-blueviolet) 
+* Framework : ![SpringBoot](https://img.shields.io/badge/-SpringBoot-brightgreen) ![BootStrap](https://img.shields.io/badge/-BootStrap-blueviolet) ![Flask](https://img.shields.io/badge/-Flask-blue)
 * Database:  ![mariaDB](https://img.shields.io/badge/-MariaDB-yellow)
 
-## 🔉 Data
+## 🔉 Data & Server
   ![image](https://user-images.githubusercontent.com/90108877/201485868-e7097add-096b-494f-8de8-b13e2d7cb94d.png)
+  
+  Flask로 "user_id" 정보를 json 데이터로 보내 작동시킨 후 DB의 데이터를 스프링부트 서버에서 클라이언트에게 보여준다.
+  
+  ![image](https://user-images.githubusercontent.com/90108877/209707307-c56bd5de-bb65-4ea0-958b-5d91054a4ad2.png)
+
   
 ```python
     {
