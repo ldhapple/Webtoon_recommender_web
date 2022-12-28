@@ -124,28 +124,16 @@ user_similarity = user_rating_similarity.add(user_info_similarity)
 user_similarity = user_similarity.dropna(how='all')
 user_similarity = user_similarity.dropna(how='all', axis=1)
 
-def setting():
-    conn = None
-    cur = None
-    sql = ""
-
+def setting(): 
     conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
     # conn = pymysql.connect(user='db01', password='db01', host='mariadb', port=3000, db='webtoonRecommender_db', charset='utf8')
     cur = conn.cursor()
-
-    user = search_user_data(conn)
-    webtoons = search_webtoon_data(conn)
     ratings = search_rating_data(conn)
-    recommendation = search_recommendation(conn)
-
-    users = user[['user_id', 'MBTI', 'AGE', 'SEX']]
+    
     ratings = ratings[['user_id','webtoon_id', 'rating']]
-
 
     x = ratings.copy()
     y = ratings['user_id']
-
-    user = users.copy()
 
     for i in range(len(user)):
         if 'TJ' in user.loc[i, 'MBTI']:
@@ -168,13 +156,6 @@ def setting():
         elif user.loc[i, 'AGE'] / 50 < 2:
             user.loc[i, 'AGE'] = 0.5
 
-    user_matrix = user.pivot(index = 'user_id',
-                            columns = 'SEX',
-                            values = 'MBTI')
-
-    x_train, x_test, y_train, y_test = train_test_split(x,y,
-                                                        test_size = 0.25)
-
 
     rating_matrix = x_train.pivot(index = 'user_id',
                                 columns = 'webtoon_id',
@@ -190,10 +171,6 @@ def setting():
     user_rating_similarity = pd.DataFrame(user_rating_similarity,
                                 index = rating_matrix.index,
                                 columns = rating_matrix.index)
-    user_info_similarity = pd.DataFrame(user_info_similarity,
-                                index = user_matrix.index,
-                                columns = user_matrix.index)
-
 
     user_similarity = user_rating_similarity.add(user_info_similarity)
     user_similarity = user_similarity.dropna(how='all')
