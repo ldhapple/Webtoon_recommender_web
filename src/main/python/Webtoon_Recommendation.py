@@ -135,28 +135,6 @@ def setting():
     x = ratings.copy()
     y = ratings['user_id']
 
-    for i in range(len(user)):
-        if 'TJ' in user.loc[i, 'MBTI']:
-            user.loc[i, 'MBTI'] = 0.1
-        elif 'FJ' in user.loc[i, 'MBTI']:
-            user.loc[i, 'MBTI'] = 0.2
-        elif 'FP' in user.loc[i, 'MBTI']:
-            user.loc[i, 'MBTI'] = 0.3
-        elif 'TP' in user.loc[i, 'MBTI']:
-            user.loc[i, 'MBTI'] = 0.4
-
-        if user.loc[i, 'AGE'] / 10 < 2:
-            user.loc[i, 'AGE'] = 0.1
-        elif user.loc[i, 'AGE'] / 20 < 2:
-            user.loc[i, 'AGE'] = 0.2
-        elif user.loc[i, 'AGE'] / 30 < 2:
-            user.loc[i, 'AGE'] = 0.3
-        elif user.loc[i, 'AGE'] / 40 < 2:
-            user.loc[i, 'AGE'] = 0.4
-        elif user.loc[i, 'AGE'] / 50 < 2:
-            user.loc[i, 'AGE'] = 0.5
-
-
     rating_matrix = x_train.pivot(index = 'user_id',
                                 columns = 'webtoon_id',
                                 values = 'rating')
