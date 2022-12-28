@@ -66,6 +66,7 @@ def recom_webtoon(n_items):
 users = user[['user_id', 'MBTI', 'AGE', 'SEX']]
 ratings = ratings[['user_id','webtoon_id', 'rating']]
 
+
 x = ratings.copy()
 y = ratings['user_id']
 
@@ -123,6 +124,82 @@ user_similarity = user_rating_similarity.add(user_info_similarity)
 user_similarity = user_similarity.dropna(how='all')
 user_similarity = user_similarity.dropna(how='all', axis=1)
 
+def setting():
+    conn = None
+    cur = None
+    sql = ""
+
+    conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
+    # conn = pymysql.connect(user='db01', password='db01', host='mariadb', port=3000, db='webtoonRecommender_db', charset='utf8')
+    cur = conn.cursor()
+
+    user = search_user_data(conn)
+    webtoons = search_webtoon_data(conn)
+    ratings = search_rating_data(conn)
+    recommendation = search_recommendation(conn)
+
+    users = user[['user_id', 'MBTI', 'AGE', 'SEX']]
+    ratings = ratings[['user_id','webtoon_id', 'rating']]
+
+
+    x = ratings.copy()
+    y = ratings['user_id']
+
+    user = users.copy()
+
+    for i in range(len(user)):
+        if 'TJ' in user.loc[i, 'MBTI']:
+            user.loc[i, 'MBTI'] = 0.1
+        elif 'FJ' in user.loc[i, 'MBTI']:
+            user.loc[i, 'MBTI'] = 0.2
+        elif 'FP' in user.loc[i, 'MBTI']:
+            user.loc[i, 'MBTI'] = 0.3
+        elif 'TP' in user.loc[i, 'MBTI']:
+            user.loc[i, 'MBTI'] = 0.4
+
+        if user.loc[i, 'AGE'] / 10 < 2:
+            user.loc[i, 'AGE'] = 0.1
+        elif user.loc[i, 'AGE'] / 20 < 2:
+            user.loc[i, 'AGE'] = 0.2
+        elif user.loc[i, 'AGE'] / 30 < 2:
+            user.loc[i, 'AGE'] = 0.3
+        elif user.loc[i, 'AGE'] / 40 < 2:
+            user.loc[i, 'AGE'] = 0.4
+        elif user.loc[i, 'AGE'] / 50 < 2:
+            user.loc[i, 'AGE'] = 0.5
+
+    user_matrix = user.pivot(index = 'user_id',
+                            columns = 'SEX',
+                            values = 'MBTI')
+
+    x_train, x_test, y_train, y_test = train_test_split(x,y,
+                                                        test_size = 0.25)
+
+
+    rating_matrix = x_train.pivot(index = 'user_id',
+                                columns = 'webtoon_id',
+                                values = 'rating')
+
+    matrix_dummy = rating_matrix.copy().fillna(0) # 원본 손상 방지
+    user_matrix_dummy = user_matrix.copy().fillna(0)
+
+    user_rating_similarity = cosine_similarity(matrix_dummy, matrix_dummy)
+
+    user_info_similarity = cosine_similarity(user_matrix_dummy, user_matrix_dummy)
+
+    user_rating_similarity = pd.DataFrame(user_rating_similarity,
+                                index = rating_matrix.index,
+                                columns = rating_matrix.index)
+    user_info_similarity = pd.DataFrame(user_info_similarity,
+                                index = user_matrix.index,
+                                columns = user_matrix.index)
+
+
+    user_similarity = user_rating_similarity.add(user_info_similarity)
+    user_similarity = user_similarity.dropna(how='all')
+    user_similarity = user_similarity.dropna(how='all', axis=1)
+
+
 def RMSE(y_true, y_pred):
     return np.sqrt(np.mean((np.array(y_true) - np.array(y_pred))**2))
 
@@ -151,34 +228,7 @@ def cf_mbti(user_id, webtoon_id):
     return MBTI_rating
 
 def CF_knn(user_id, webtoon_id, neighbor_size = 0):
-    recommendation = search_recommendation(conn)
-    x = ratings.copy()
-    y = ratings['user_id']
-    x_train, x_test, y_train, y_test = train_test_split(x,y,
-                                                        test_size = 0.25)
-
-    rating_matrix = x_train.pivot(index = 'user_id',
-                                      columns = 'webtoon_id',
-                                      values = 'rating')
-    matrix_dummy = rating_matrix.copy().fillna(0) # 원본 손상 방지
-    user_matrix_dummy = user_matrix.copy().fillna(0)
-
-    user_rating_similarity = cosine_similarity(matrix_dummy, matrix_dummy)
-
-    user_info_similarity = cosine_similarity(user_matrix_dummy, user_matrix_dummy)
-
-    user_rating_similarity = pd.DataFrame(user_rating_similarity,
-                                       index = rating_matrix.index,
-                                       columns = rating_matrix.index)
-    user_info_similarity = pd.DataFrame(user_info_similarity,
-                                       index = user_matrix.index,
-                                       columns = user_matrix.index)
-
-
-    user_similarity = user_rating_similarity.add(user_info_similarity)
-    user_similarity = user_similarity.dropna(how='all')
-    user_similarity = user_similarity.dropna(how='all', axis=1)
-
+    setting()
     if webtoon_id in rating_matrix.columns:
         sim_scores = user_similarity[user_id].copy()
         webtoon_ratings = rating_matrix[webtoon_id].copy()
@@ -212,34 +262,7 @@ def CF_knn(user_id, webtoon_id, neighbor_size = 0):
 
 @app.route('/recom_webtoon', methods=['GET', 'POST'])
 def recom_webtoon():
-    recommendation = search_recommendation(conn)
-    x = ratings.copy()
-    y = ratings['user_id']
-    x_train, x_test, y_train, y_test = train_test_split(x,y,
-                                                        test_size = 0.25)
-
-    rating_matrix = x_train.pivot(index = 'user_id',
-                                  columns = 'webtoon_id',
-                                  values = 'rating')
-    matrix_dummy = rating_matrix.copy().fillna(0) # 원본 손상 방지
-    user_matrix_dummy = user_matrix.copy().fillna(0)
-
-    user_rating_similarity = cosine_similarity(matrix_dummy, matrix_dummy)
-
-    user_info_similarity = cosine_similarity(user_matrix_dummy, user_matrix_dummy)
-
-    user_rating_similarity = pd.DataFrame(user_rating_similarity,
-                                   index = rating_matrix.index,
-                                   columns = rating_matrix.index)
-    user_info_similarity = pd.DataFrame(user_info_similarity,
-                                   index = user_matrix.index,
-                                   columns = user_matrix.index)
-
-
-    user_similarity = user_rating_similarity.add(user_info_similarity)
-    user_similarity = user_similarity.dropna(how='all')
-    user_similarity = user_similarity.dropna(how='all', axis=1)
-
+    setting()
     params = request.get_json()
     user_id = params['user_id'][0]
     n_items = 20
