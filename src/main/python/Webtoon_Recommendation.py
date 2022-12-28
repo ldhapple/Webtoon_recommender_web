@@ -135,6 +135,9 @@ def setting():
     x = ratings.copy()
     y = ratings['user_id']
 
+    x_train, x_test, y_train, y_test = train_test_split(x,y,
+                                                    test_size = 0.25)
+
     rating_matrix = x_train.pivot(index = 'user_id',
                                 columns = 'webtoon_id',
                                 values = 'rating')
@@ -149,6 +152,9 @@ def setting():
     user_rating_similarity = pd.DataFrame(user_rating_similarity,
                                 index = rating_matrix.index,
                                 columns = rating_matrix.index)
+    user_info_similarity = pd.DataFrame(user_info_similarity,
+                               index = user_matrix.index,
+                               columns = user_matrix.index)
 
     user_similarity = user_rating_similarity.add(user_info_similarity)
     user_similarity = user_similarity.dropna(how='all')
@@ -183,7 +189,6 @@ def cf_mbti(user_id, webtoon_id):
     return MBTI_rating
 
 def CF_knn(user_id, webtoon_id, neighbor_size = 0):
-    setting()
     if webtoon_id in rating_matrix.columns:
         sim_scores = user_similarity[user_id].copy()
         webtoon_ratings = rating_matrix[webtoon_id].copy()
