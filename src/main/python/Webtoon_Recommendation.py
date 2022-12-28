@@ -151,6 +151,33 @@ def cf_mbti(user_id, webtoon_id):
     return MBTI_rating
 
 def CF_knn(user_id, webtoon_id, neighbor_size = 0):
+    recommendation = search_recommendation(conn)
+        x = ratings.copy()
+        y = ratings['user_id']
+        x_train, x_test, y_train, y_test = train_test_split(x,y,
+                                                            test_size = 0.25)
+
+        rating_matrix = x_train.pivot(index = 'user_id',
+                                      columns = 'webtoon_id',
+                                      values = 'rating')
+        matrix_dummy = rating_matrix.copy().fillna(0) # 원본 손상 방지
+        user_matrix_dummy = user_matrix.copy().fillna(0)
+
+        user_rating_similarity = cosine_similarity(matrix_dummy, matrix_dummy)
+
+        user_info_similarity = cosine_similarity(user_matrix_dummy, user_matrix_dummy)
+
+        user_rating_similarity = pd.DataFrame(user_rating_similarity,
+                                       index = rating_matrix.index,
+                                       columns = rating_matrix.index)
+        user_info_similarity = pd.DataFrame(user_info_similarity,
+                                       index = user_matrix.index,
+                                       columns = user_matrix.index)
+
+
+        user_similarity = user_rating_similarity.add(user_info_similarity)
+        user_similarity = user_similarity.dropna(how='all')
+        user_similarity = user_similarity.dropna(how='all', axis=1)
 
     if webtoon_id in rating_matrix.columns:
         sim_scores = user_similarity[user_id].copy()
@@ -186,6 +213,33 @@ def CF_knn(user_id, webtoon_id, neighbor_size = 0):
 @app.route('/recom_webtoon', methods=['GET', 'POST'])
 def recom_webtoon():
     recommendation = search_recommendation(conn)
+    x = ratings.copy()
+    y = ratings['user_id']
+    x_train, x_test, y_train, y_test = train_test_split(x,y,
+                                                        test_size = 0.25)
+
+    rating_matrix = x_train.pivot(index = 'user_id',
+                                  columns = 'webtoon_id',
+                                  values = 'rating')
+    matrix_dummy = rating_matrix.copy().fillna(0) # 원본 손상 방지
+    user_matrix_dummy = user_matrix.copy().fillna(0)
+
+    user_rating_similarity = cosine_similarity(matrix_dummy, matrix_dummy)
+
+    user_info_similarity = cosine_similarity(user_matrix_dummy, user_matrix_dummy)
+
+    user_rating_similarity = pd.DataFrame(user_rating_similarity,
+                                   index = rating_matrix.index,
+                                   columns = rating_matrix.index)
+    user_info_similarity = pd.DataFrame(user_info_similarity,
+                                   index = user_matrix.index,
+                                   columns = user_matrix.index)
+
+
+    user_similarity = user_rating_similarity.add(user_info_similarity)
+    user_similarity = user_similarity.dropna(how='all')
+    user_similarity = user_similarity.dropna(how='all', axis=1)
+
     params = request.get_json()
     user_id = params['user_id'][0]
     n_items = 20
