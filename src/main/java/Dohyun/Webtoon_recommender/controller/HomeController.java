@@ -81,7 +81,7 @@ public class HomeController {
         if(ratingRepository.findByUserId(user_id).size() >= 5)
         {
             RestTemplate restTemplate = new RestTemplate();
-            String url = "http://localhost:5001/recom_webtoon";
+            String url = "http://localhost:5000/recom_webtoon";
 
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.setContentType(MediaType.APPLICATION_JSON);
