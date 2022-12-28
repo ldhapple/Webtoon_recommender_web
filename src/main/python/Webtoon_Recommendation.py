@@ -4,13 +4,21 @@
 import pymysql
 import pandas as pd
 import numpy as np
+from flask import Flask, request, redirect
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.metrics.pairwise import cosine_similarity
+import json
+import os
+
+app = Flask(__name__)
 
 conn = None
 cur = None
-
 sql = ""
 
-conn = pymysql.connect(host='127.0.0.1', user='root', password='ehgus1319@', db='mydb', charset='utf8' )
+conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
+# conn = pymysql.connect(user='db01', password='db01', host='mariadb', port=3000, db='webtoonRecommender_db', charset='utf8')
 cur = conn.cursor()
 
 def search_user_data(conn):
@@ -39,7 +47,7 @@ def search_recommendation(conn):
     sql = 'SELECT * FROM recommendation'
     cur.execute(sql)
     results = cur.fetchall()
-    df = pd.DataFrame(results, columns=['user', 'webtoonid', 'rank'])
+    df = pd.DataFrame(results, columns=['id', 'user', 'webtoonid', 'rank'])
     return df
 
 user = search_user_data(conn)
@@ -58,8 +66,6 @@ def recom_webtoon(n_items):
 users = user[['user_id', 'MBTI', 'AGE', 'SEX']]
 ratings = ratings[['user_id','webtoon_id', 'rating']]
 
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.model_selection import train_test_split
 x = ratings.copy()
 y = ratings['user_id']
 
@@ -73,8 +79,8 @@ for i in range(len(user)):
     elif 'FP' in user.loc[i, 'MBTI']:
         user.loc[i, 'MBTI'] = 0.3
     elif 'TP' in user.loc[i, 'MBTI']:
-        user.loc[i, 'MBTI'] = 0.4   
-        
+        user.loc[i, 'MBTI'] = 0.4
+
     if user.loc[i, 'AGE'] / 10 < 2:
         user.loc[i, 'AGE'] = 0.1
     elif user.loc[i, 'AGE'] / 20 < 2:
@@ -85,15 +91,15 @@ for i in range(len(user)):
         user.loc[i, 'AGE'] = 0.4
     elif user.loc[i, 'AGE'] / 50 < 2:
         user.loc[i, 'AGE'] = 0.5
-        
+
 user_matrix = user.pivot(index = 'user_id',
                         columns = 'SEX',
                         values = 'MBTI')
 
 x_train, x_test, y_train, y_test = train_test_split(x,y,
                                                     test_size = 0.25)
-                                                 
-from sklearn.metrics.pairwise import cosine_similarity
+
+
 rating_matrix = x_train.pivot(index = 'user_id',
                               columns = 'webtoon_id',
                               values = 'rating')
@@ -145,7 +151,7 @@ def cf_mbti(user_id, webtoon_id):
     return MBTI_rating
 
 def CF_knn(user_id, webtoon_id, neighbor_size = 0):
-    
+
     if webtoon_id in rating_matrix.columns:
         sim_scores = user_similarity[user_id].copy()
         webtoon_ratings = rating_matrix[webtoon_id].copy()
@@ -173,23 +179,30 @@ def CF_knn(user_id, webtoon_id, neighbor_size = 0):
                 mean_rating = 3.0
     else:
         mean_rating = 3.0
-        
+
     return mean_rating
 
-def recom_webtoon(user_id, n_items, neighbor_size = 30):
+
+@app.route('/recom_webtoon', methods=['GET', 'POST'])
+def recom_webtoon():
+    recommendation = search_recommendation(conn)
+    params = request.get_json()
+    user_id = params['user_id'][0]
+    n_items = 20
+    neighbor_size = 30
     user_webtoon = rating_matrix.loc[user_id].copy()
 
     for webtoon in rating_matrix.columns:
         if pd.notnull(user_webtoon.loc[webtoon]):
-            user_webtoon.loc[webtoon] = 0 # 해당 웹툰을 이미 평가한 경우는 제외.
-    
+            user_webtoon.loc[webtoon] = 0
+
         else:
             user_webtoon.loc[webtoon] = CF_knn(user_id, webtoon, neighbor_size)
 
     webtoon_sort = user_webtoon.sort_values(ascending=False)[:n_items]
     recom_webtoon = webtoons.loc[webtoon_sort.index]
     recommendations = recom_webtoon
-    
+
     for i in range(n_items):
         if ((recommendation['user']==user_id).any()) == False :
             SQL = "INSERT INTO recommendation SET user=%s, webtoonid=%s, rank=%s"
@@ -202,7 +215,7 @@ def recom_webtoon(user_id, n_items, neighbor_size = 30):
             cur.execute(SQL, SQL_data)
             conn.commit()
 
-    return recommendations
+    return redirect("http://localhost:8080/login")
 
 def score(model, neighbor_size = 0):
     id_pairs = zip(x_test['user_id'], x_test['webtoon_id'])
@@ -210,11 +223,8 @@ def score(model, neighbor_size = 0):
     y_true = np.array(x_test['rating'])
     return RMSE(y_true, y_pred)
 
-
-def main():
-    recom_webtoon(user_id = 5, n_items = 20, neighbor_size= 30)
+# def main():
+#     recom_webtoon(user_id = 5, n_items = 20, neighbor_size= 30)
 
 if __name__ == "__main__":
-    main()
-
-
+    app.run('0.0.0.0', port="5000", debug=True)
