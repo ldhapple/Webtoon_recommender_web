@@ -98,7 +98,7 @@ def recom_webtoon():
     conn1 = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
     
     global user
-    user = search_user_data(conn1) 
+    user = search_user_data(conn1)
     
     global ratings
     ratings = search_rating_data(conn1)
