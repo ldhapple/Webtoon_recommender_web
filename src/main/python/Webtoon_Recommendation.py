@@ -19,37 +19,46 @@ sql = ""
 
 # conn = pymysql.connect(host='127.0.0.1', user='myadmin', password='ehgus1319@', db='mydb', charset='utf8' )
 conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
-# conn = pymysql.connect(user='db01', password='db01', host='mariadb', port=3000, db='webtoonRecommender_db', charset='utf8')
-cur = conn.cursor()
 
 def search_user_data(conn):
     sql = 'SELECT * FROM user'
+    cur = conn.cursor()
     cur.execute(sql)
     results = cur.fetchall()
     df = pd.DataFrame(results, columns=['user_id', 'username', 'password', 'enabled', 'MBTI', 'SEX', 'AGE'])
+    cur.close()
     return df
 
 def search_webtoon_data(conn):
     sql = 'SELECT * FROM webtoon_data'
+    cur = conn.cursor()
     cur.execute(sql)
     results = cur.fetchall()
     df = pd.DataFrame(results, columns=['title_id', 'title_name', 'author', 'day', 'genre', 'story', 'link', 'img_src'])
     webtoons = df.set_index('title_id')
+    cur.close()
     return webtoons
 
 def search_rating_data(conn):
     sql = 'SELECT * FROM rating'
+    cur = conn.cursor()
     cur.execute(sql)
     results = cur.fetchall()
     df = pd.DataFrame(results, columns=['id', 'user_id', 'webtoon_id', 'rating'])
+    cur.close()
     return df
 
 def search_recommendation(conn):
     sql = 'SELECT * FROM recommendation'
+    cur = conn.cursor()
     cur.execute(sql)
     results = cur.fetchall()
     df = pd.DataFrame(results, columns=['id', 'user', 'webtoonid', 'rank'])
+    cur.close()
     return df
+
+global webtoons
+webtoons = search_webtoon_data(conn)
 
 def CF_knn(user_id, webtoon_id, neighbor_size = 0):
     if webtoon_id in rating_matrix.columns:
@@ -85,18 +94,18 @@ def CF_knn(user_id, webtoon_id, neighbor_size = 0):
 
 @app.route('/recom_webtoon', methods=['GET', 'POST'])
 def recom_webtoon():
-    # conn = pymysql.connect(host='127.0.0.1', user='myadmin', password='ehgus1319@', db='mydb', charset='utf8' )
-    conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
-    cur = conn.cursor()
-
+    # conn1 = pymysql.connect(host='127.0.0.1', user='myadmin', password='ehgus1319@', db='mydb', charset='utf8' )
+    conn1 = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
+    
     global user
-    user = search_user_data(conn) 
-    global webtoons
-    webtoons = search_webtoon_data(conn)
+    user = search_user_data(conn1) 
+    
     global ratings
-    ratings = search_rating_data(conn)
+    ratings = search_rating_data(conn1)
+
     global recommendation
-    recommendation = search_recommendation(conn)
+    recommendation = search_recommendation(conn1)
+    
 
     global users
     users = user[['user_id', 'MBTI', 'AGE', 'SEX']]
@@ -189,13 +198,15 @@ def recom_webtoon():
         if ((recommendation['user']==user_id).any()) == False :
             SQL = "INSERT INTO recommendation SET user=%s, webtoonid=%s, rank=%s"
             SQL_data = (user_id, recommendations.index[i], i+1)
+            cur = conn1.cursor()
             cur.execute(SQL, SQL_data)
-            conn.commit()
+            conn1.commit()
         else:
             SQL = "UPDATE recommendation SET user=%s, webtoonid=%s, rank=%s WHERE user=%s and rank=%s"
             SQL_data = (user_id, recommendations.index[i], i+1, user_id, i+1)
+            cur = conn1.cursor()
             cur.execute(SQL, SQL_data)
-            conn.commit()
+            conn1.commit()
 
     return redirect("http://localhost:8080/login")
 
