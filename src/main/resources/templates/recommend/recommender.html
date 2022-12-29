@@ -74,8 +74,9 @@
             </div>
             <div class="content">
                 <h3 th:text="${every_webtoon_data.titlename}"> 웹툰제목</h3>
-                <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-                <form th:action="@{/recommend/recommender}" th:object="${rating}" method="post" target="dummyframe">
+<!--                <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>-->
+<!--                target="dummyframe"-->
+                <form th:action="@{/recommend/recommender}" th:object="${rating}" method="post">
                     <input type="hidden" name="webtoonid" th:value="${every_webtoon_data.titleid}">
                     <div class="rating">
                         <input type='radio' hidden name='rate' th:id="${every_webtoon_data.titleid}+0.1" data-idx='1'
