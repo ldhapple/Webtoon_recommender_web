@@ -17,8 +17,8 @@ conn = None
 cur = None
 sql = ""
 
-conn = pymysql.connect(host='127.0.0.1', user='myadmin', password='ehgus1319@', db='mydb', charset='utf8' )
-# conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
+# conn = pymysql.connect(host='127.0.0.1', user='myadmin', password='ehgus1319@', db='mydb', charset='utf8' )
+conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
 
 def search_user_data(conn):
     sql = 'SELECT * FROM user'
