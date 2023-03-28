@@ -17,8 +17,8 @@ conn = None
 cur = None
 sql = ""
 
-# conn = pymysql.connect(host='127.0.0.1', user='myadmin', password='ehgus1319@', db='mydb', charset='utf8' )
-conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
+conn = pymysql.connect(host='127.0.0.1', user='myadmin', password='ehgus1319@', db='mydb', charset='utf8' )
+# conn = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
 
 def search_user_data(conn):
     sql = 'SELECT * FROM user'
@@ -94,8 +94,8 @@ def CF_knn(user_id, webtoon_id, neighbor_size = 0):
 
 @app.route('/recom_webtoon', methods=['GET', 'POST'])
 def recom_webtoon():
-    # conn1 = pymysql.connect(host='127.0.0.1', user='myadmin', password='ehgus1319@', db='mydb', charset='utf8' )
-    conn1 = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
+    conn1 = pymysql.connect(host='127.0.0.1', user='myadmin', password='ehgus1319@', db='mydb', charset='utf8' )
+    # conn1 = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='mydb', charset='utf8' )
     
     global user
     user = search_user_data(conn1)

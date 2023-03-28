@@ -74,8 +74,8 @@ public class HomeController {
     public String home_login(Model model, Authentication authentication) {
         String username = authentication.getName();
         String user_sex = userRepository.findByUsername(username).getSex();
-
-
+        String user_mbti = userRepository.findByUsername(username).getMbti();
+        model.addAttribute("u_mbti", recommendService.recommend_mbti(user_mbti));
         long user_id = userRepository.findByUsername(username).getId();
 
         if(ratingRepository.findByUserId(user_id).size() >= 5)

@@ -33,6 +33,7 @@
             <h1 class="page-title"> Webtoon Recommender </h1>
             <p class="page-subtitle">나이, 성별, MBTI, 평가를 바탕으로<br>
                 나한테 딱 맞는 웹툰을 추천받고 지인과 공유하세요.</p>
+            <p class ="main-comment">현재 네이버 웹툰 한정으로 서비스 중입니다.</p>
         </div>
     </header>
 
@@ -67,6 +68,31 @@
 
     <h1 class="section-title">MBTI별 선호 웹툰</h1>
     <hr class="my-4">
+
+    <h2 class="section-title">User's MBTI</h2>
+    <div class="row">
+        <div class="headers">
+            <div class="progress-bars"></div>
+        </div>
+        <div class="src">
+            <button class="handle left-handle">
+                <div class="text">&#8249;</div>
+            </button>
+            <div class="slider">
+                <div class="card" th:each="u_mbti : ${u_mbti}">
+                    <img th:src="${u_mbti.webtoon.img_src}" alt="">
+                    <div class="description">
+                        <h3 th:text="${u_mbti.webtoon.titlename}">별이삼샵</h3>
+                        <p></p>
+                        <a th:href="@{/detail/detailpage/(id=${u_mbti.webtoon.titleid})}">comments</a>
+                    </div>
+                </div>
+            </div>
+            <button class="handle right-handle">
+                <div class="text">&#8250;</div>
+            </button>
+        </div>
+    </div>
 
 
     <h2 class="section-title">ISTJ</h2>
